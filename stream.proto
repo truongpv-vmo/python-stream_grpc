@@ -1,0 +1,16 @@
+syntax = "proto3";
+package stream;
+
+message CallInfo {
+  string session_id = 1;
+  int32 result=2;
+}
+message Cancel {
+  string session_id = 1;
+}
+
+
+service PostController {
+  rpc Stream(CallInfo) returns (stream CallInfo) {}
+  rpc Cancel(Cancel) returns (stream Cancel) {}
+}
